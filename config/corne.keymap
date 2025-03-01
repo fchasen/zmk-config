@@ -9,6 +9,17 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    behaviors {
+        layer_hold_tap: layer_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_HOLD_TAP";
+            bindings = <&mo>, <&to>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <400>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -20,10 +31,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&lt 3 TAB   &kp Q  &kp W  &kp E     &kp R  &kp T        &kp Y    &kp U  &kp I          &kp O    &kp P     &kp BSPC
-&kp ESCAPE  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H    &kp J  &kp K          &kp L    &kp SEMI  &kp SQT
-&kp LSHFT   &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N    &kp M  &kp COMMA      &kp DOT  &kp FSLH  &kp RSHIFT
-                          &kp LGUI  &to 1  &kp SPACE    &kp RET  &to 2  &kp RIGHT_GUI
+&lt 3 TAB  &kp Q  &kp W  &kp E     &kp R                &kp T        &kp Y    &kp U                &kp I          &kp O    &kp P     &kp BSPC
+&gresc     &kp A  &kp S  &kp D     &kp F                &kp G        &kp H    &kp J                &kp K          &kp L    &kp SEMI  &kp SQT
+&kp LSHFT  &kp Z  &kp X  &kp C     &kp V                &kp B        &kp N    &kp M                &kp COMMA      &kp DOT  &kp FSLH  &kp RSHIFT
+                         &kp LGUI  &layer_hold_tap 1 1  &kp SPACE    &kp RET  &layer_hold_tap 2 2  &kp RIGHT_GUI
             >;
         };
 
