@@ -69,6 +69,15 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        ArrowCombo {
+            bindings = <&tog 1>;
+            key-positions = <35 24>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -80,10 +89,19 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&lt 3 TAB            &kp Q  &kp W  &kp E                &kp R                &kp T                              &kp Y                              &kp U                             &kp I                &kp O           &kp P           &kp BSPC
+&lt 4 TAB            &kp Q  &kp W  &kp E                &kp R                &kp T                              &kp Y                              &kp U                             &kp I                &kp O           &kp P           &kp BSPC
 &gresc               &kp A  &kp S  &kp D                &kp F                &kp G                              &kp H                              &kp J                             &kp K                &kp L           &kp UP_ARROW    &mt RS(SQT) SQT
 &tap_tap_shift_caps  &kp Z  &kp X  &kp C                &kp V                &kp B                              &kp N                              &kp M                             &mt COMMA PERIOD     &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
-                                   &tap_tap_copy_paste  &layer_hold_tap 1 1  &idle_hold_layer_tap_kp 2 SPACE    &idle_hold_tap_kp RIGHT_GUI SPACE  &idle_hold_layer_tap_kp 2 RETURN  &tap_tap_shift_caps
+                                   &tap_tap_copy_paste  &layer_hold_tap 2 2  &idle_hold_layer_tap_kp 3 SPACE    &idle_hold_tap_kp RIGHT_GUI SPACE  &idle_hold_layer_tap_kp 3 RETURN  &tap_tap_shift_caps
+            >;
+        };
+
+        Navigation {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans                          &trans          &trans          &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans                          &trans          &kp UP_ARROW    &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &idle_hold_tap_kp COMMA PERIOD  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
+                        &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
 
