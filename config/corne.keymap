@@ -12,7 +12,7 @@
     behaviors {
         layer_hold_tap: layer_hold_tap {
             compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_HOLD_TAP";
+            label = "Layer Hold and Tap";
             bindings = <&mo>, <&to>;
 
             #binding-cells = <2>;
@@ -23,7 +23,7 @@
 
         tap_layer_hold_kp: tap_layer_hold_kp {
             compatible = "zmk,behavior-hold-tap";
-            label = "TAP_LAYER_HOLD_KP";
+            label = "Tap Layer Hold Kp";
             bindings = <&kp>, <&to>;
 
             #binding-cells = <2>;
@@ -34,38 +34,98 @@
 
         idle_hold_tap_kp: idle_hold_tap_kp {
             compatible = "zmk,behavior-hold-tap";
-            label = "IDLE_HOLD_TAP_KP";
+            label = "Idle Hold Tap Key";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-            require-prior-idle-ms = <125>;
+            require-prior-idle-ms = <300>;
             flavor = "tap-preferred";
         };
 
         idle_hold_layer_tap_kp: idle_hold_layer_tap_kp {
             compatible = "zmk,behavior-hold-tap";
-            label = "IDLE_HOLD_LAYER_TAP_KP";
+            label = "Idle Hold Layer MO Tap Key Press";
             bindings = <&mo>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-            require-prior-idle-ms = <125>;
+            require-prior-idle-ms = <300>;
             flavor = "tap-preferred";
+            retro-tap;
+            quick-tap-ms = <100>;
         };
 
         tap_tap_copy_paste: tap_tap_copy_paste {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_TAP_COPY_PASTE";
+            label = "Tap tap copy paste";
             #binding-cells = <0>;
             bindings = <&kp LG(C)>, <&kp LG(V)>;
         };
 
         tap_tap_shift_caps: tap_tap_shift_caps {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_TAP_SHIFT_CAPS";
+            label = "Tap tap shift caps";
             #binding-cells = <0>;
             bindings = <&sk LSHFT>, <&caps_word>;
+        };
+
+        stick_hold_kp: stick_hold_kp {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Sticky hold tap";
+            bindings = <&sk>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            flavor = "tap-preferred";
+            require-prior-idle-ms = <400>;
+        };
+
+        num_hold: num_hold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Hold num keys and kp";
+            bindings = <&sl>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            hold-trigger-key-positions = <1 2 3 4 5 6 7 8 9 10 0 11 37>;
+            retro-tap;
+        };
+
+        num_sk: num_sk {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Num row sticky key";
+            bindings = <&sl>, <&sk>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            hold-trigger-key-positions = <1 2 3 4 5 6 7 8 9 10 0 11 37>;
+            retro-tap;
+        };
+
+        back_layer: back_layer {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Back layer";
+            bindings = <&mo>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            require-prior-idle-ms = <125>;
+            retro-tap;
+            quick-tap-ms = <125>;
+        };
+
+        arrow: arrow {
+            compatible = "zmk,behavior-hold-tap";
+            label = "ARROW";
+            bindings = <&to>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            require-prior-idle-ms = <125>;
+            retro-tap;
+            quick-tap-ms = <125>;
+            hold-trigger-key-positions = <33 22 34 35>;
         };
     };
 
@@ -89,19 +149,19 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&lt 4 TAB            &kp Q  &kp W  &kp E                &kp R                &kp T                              &kp Y                              &kp U                             &kp I                &kp O           &kp P           &kp BSPC
-&gresc               &kp A  &kp S  &kp D                &kp F                &kp G                              &kp H                              &kp J                             &kp K                &kp L           &kp UP_ARROW    &mt RS(SQT) SQT
-&tap_tap_shift_caps  &kp Z  &kp X  &kp C                &kp V                &kp B                              &kp N                              &kp M                             &mt COMMA PERIOD     &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
-                                   &tap_tap_copy_paste  &layer_hold_tap 2 2  &idle_hold_layer_tap_kp 3 SPACE    &idle_hold_tap_kp RIGHT_GUI SPACE  &idle_hold_layer_tap_kp 3 RETURN  &tap_tap_shift_caps
+&mt GRAVE TAB                   &kp Q  &kp W  &kp E           &kp R                 &kp T                              &kp Y                           &kp U               &kp I                         &kp O                                   &kp P                &back_layer 4 BACKSPACE
+&idle_hold_tap_kp LC(C) ESCAPE  &kp A  &kp S  &kp D           &kp F                 &kp G                              &kp H                           &kp J               &kp K                         &kp L                                   &mt MINUS SEMICOLON  &mt EQUAL SQT
+&tap_tap_copy_paste             &kp Z  &kp X  &kp C           &kp V                 &kp B                              &kp N                           &kp M               &idle_hold_tap_kp LBKT COMMA  &idle_hold_tap_kp RIGHT_BRACKET PERIOD  &mt BACKSLASH SLASH  &arrow 1 RIGHT
+                                              &lt 2 UP_ARROW  &num_sk 2 LEFT_SHIFT  &stick_hold_kp LEFT_SHIFT SPACE    &stick_hold_kp RIGHT_GUI SPACE  &num_hold 3 RETURN  &lt 3 DOWN_ARROW
             >;
         };
 
         Navigation {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans                          &trans          &trans          &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans                          &trans          &kp UP_ARROW    &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &idle_hold_tap_kp COMMA PERIOD  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
-                        &trans  &trans  &trans    &trans  &trans  &trans
+&trans  &to 0  &to 0  &to 0   &to 0   &to 0     &to 0   &to 0   &to 0   &to 0           &to 0           &trans
+&trans  &to 0  &to 0  &to 0   &to 0   &to 0     &to 0   &to 0   &to 0   &to 0           &kp UP_ARROW    &to 0
+&trans  &to 0  &to 0  &to 0   &to 0   &to 0     &to 0   &to 0   &to 0   &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
+                      &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
 
@@ -116,7 +176,7 @@
 &kp GRAVE     &kp N1  &kp N2  &kp N3  &kp N4  &kp N5         &kp N6    &kp N7    &kp N8  &kp N9     &kp N0  &kp BSPC
 &kp LC(C)     &trans  &trans  &trans  &trans  &kp LG(TAB)    &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &trans  &trans
 &kp LEFT_ALT  &trans  &trans  &trans  &trans  &kp LG(Z)      &trans    &trans    &trans  &trans     &trans  &trans
-                              &trans  &to 0   &trans         &trans    &trans    &trans
+                              &to 3   &to 0   &trans         &trans    &trans    &to 0
             >;
         };
 
@@ -128,19 +188,19 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp GRAVE  &kp EXCL  &kp AT  &kp HASH      &kp DLLR          &kp PRCNT             &kp CARET  &kp AMPS       &kp ASTRK       &kp LPAR            &kp RPAR               &kp BSPC
-&trans     &trans    &trans  &kp GRAVE     &kp BACKSLASH     &kp PLUS              &kp EQUAL  &kp SEMI       &kp RS(SEMI)    &kp RS(LEFT_BRACE)  &kp RS(RIGHT_BRACKET)  &kp QUESTION
-&trans     &trans    &trans  &kp TILDE     &kp PIPE          &kp LS(UNDERSCORE)    &kp MINUS  &kp RS(COMMA)  &kp RS(PERIOD)  &kp LEFT_BRACKET    &kp RIGHT_BRACKET      &kp SLASH
-                             &sk LEFT_ALT  &sk LEFT_CONTROL  &trans                &trans     &trans         &trans
+&kp GRAVE     &kp EXCL  &kp AT  &kp HASH   &kp DLLR          &kp PRCNT             &kp CARET  &kp AMPS       &kp ASTRK       &kp LPAR            &kp RPAR               &kp BSPC
+&trans        &trans    &trans  &kp GRAVE  &kp BACKSLASH     &kp PLUS              &kp EQUAL  &kp SEMI       &kp RS(SEMI)    &kp RS(LEFT_BRACE)  &kp RS(RIGHT_BRACKET)  &kp QUESTION
+&kp LEFT_ALT  &trans    &trans  &kp TILDE  &kp PIPE          &kp LS(UNDERSCORE)    &kp MINUS  &kp RS(COMMA)  &kp RS(PERIOD)  &kp LEFT_BRACKET    &kp RIGHT_BRACKET      &kp SLASH
+                                &trans     &sk LEFT_CONTROL  &trans                &trans     &trans         &to 0
             >;
         };
 
         fn_layer {
             bindings = <
-&trans          &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &bt BT_SEL 0    &bt BT_CLR  &trans            &trans  &trans          &trans             &soft_off
+&bt BT_CLR      &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &bt BT_SEL 0    &bt BT_CLR  &trans            &trans  &trans          &trans             &soft_off
 &bootloader     &trans        &trans        &trans        &trans          &trans          &trans      &trans            &trans  &trans          &kp K_VOLUME_UP    &bootloader
 &studio_unlock  &trans        &trans        &trans        &trans          &sys_reset      &sys_reset  &trans            &trans  &kp K_PREVIOUS  &kp K_VOLUME_DOWN  &kp K_NEXT
-                                            &trans        &studio_unlock  &trans          &trans      &kp K_PLAY_PAUSE  &trans
+                                            &trans        &studio_unlock  &trans          &kp K_MUTE  &kp K_PLAY_PAUSE  &trans
             >;
         };
     };
