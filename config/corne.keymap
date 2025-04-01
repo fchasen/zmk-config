@@ -67,7 +67,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "Tap tap shift caps";
             #binding-cells = <0>;
-            bindings = <&sk LSHFT>, <&caps_word>;
+            bindings = <&left_homerow LSHFT TAB>, <&caps_word>;
         };
 
         thumb_hold_kp: thumb_hold_kp {
@@ -76,87 +76,57 @@
             bindings = <&sk>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            flavor = "hold-preferred";
+            tapping-term-ms = <280>;
+            flavor = "balanced";
             require-prior-idle-ms = <200>;
             quick-tap-ms = <200>;
-            retro-tap;
-        };
-
-        num_hold: num_hold {
-            compatible = "zmk,behavior-hold-tap";
-            label = "Hold num keys and kp";
-            bindings = <&sl>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            hold-trigger-key-positions = <1 2 3 4 5 6 7 8 9 10 0 11>;
-            retro-tap;
-            quick-tap-ms = <200>;
-        };
-
-        num_sk: num_sk {
-            compatible = "zmk,behavior-hold-tap";
-            label = "Num row sticky key";
-            bindings = <&sl>, <&sk>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            hold-trigger-key-positions = <1 2 3 4 5 6 7 8 9 10 0 11 37>;
-            retro-tap;
-        };
-
-        back_layer: back_layer {
-            compatible = "zmk,behavior-hold-tap";
-            label = "Back layer";
-            bindings = <&mo>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            require-prior-idle-ms = <125>;
-            retro-tap;
-            quick-tap-ms = <125>;
-        };
-
-        arrow: arrow {
-            compatible = "zmk,behavior-hold-tap";
-            label = "ARROW";
-            bindings = <&to>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            require-prior-idle-ms = <125>;
-            retro-tap;
-            quick-tap-ms = <125>;
-            hold-trigger-key-positions = <33 22 34 35>;
-        };
-
-        right_homerow: right_homerow {
-            compatible = "zmk,behavior-hold-tap";
-            label = "Right Homerow";
-            bindings = <&sk>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            flavor = "hold-preferred";
-            require-prior-idle-ms = <200>;
-            quick-tap-ms = <200>;
-            retro-tap;
-            hold-trigger-key-positions = <6 7 8 9 10 22 21 19 20 18 30 31 32 33 34 35 23 11>;
         };
 
         left_homerow: left_homerow {
             compatible = "zmk,behavior-hold-tap";
-            label = "LEFT_HOMEROW";
+            label = "Left Homerow";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+            flavor = "balanced";
+            require-prior-idle-ms = <200>;
+            quick-tap-ms = <200>;
+            hold-trigger-key-positions = <6 7 8 9 10 22 21 19 20 18 30 31 32 33 34 35 23 11>;
+            hold-trigger-on-release;
+        };
+
+        right_homerow: right_homerow {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Right homerow";
             bindings = <&sk>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            flavor = "hold-preferred";
+            tapping-term-ms = <280>;
+            flavor = "balanced";
             require-prior-idle-ms = <200>;
             quick-tap-ms = <200>;
-            retro-tap;
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 29 28 27 26 25 24>;
+            hold-trigger-on-release;
+        };
+
+        escape: escape {
+            compatible = "zmk,behavior-tap-dance";
+            label = "Escaper";
+            #binding-cells = <0>;
+            bindings = <&mt GRAVE ESCAPE>, <&kp LC(C)>;
+        };
+
+        thumb_layer: thumb_layer {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Thumb layer";
+            bindings = <&sl>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+            flavor = "balanced";
+            require-prior-idle-ms = <200>;
+            quick-tap-ms = <200>;
         };
     };
 
@@ -180,10 +150,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&mt GRAVE TAB                   &kp Q  &kp W                      &kp E                          &kp R                      &kp T                               &kp Y                           &kp U                      &kp I                          &kp O                                   &kp P                &kp BACKSPACE
-&idle_hold_tap_kp LC(C) ESCAPE  &kp A  &right_homerow LEFT_ALT S  &right_homerow D LEFT_CONTROL  &right_homerow F LEFT_GUI  &right_homerow G LEFT_SHIFT         &left_homerow H RIGHT_SHIFT     &left_homerow J RIGHT_GUI  &left_homerow K RIGHT_CONTROL  &left_homerow L RIGHT_ALT               &mt MINUS SEMICOLON  &mt EQUAL SQT
-&layer_hold_tap 4 1             &kp Z  &kp X                      &kp C                          &kp V                      &kp B                               &kp N                           &kp M                      &idle_hold_tap_kp LBKT COMMA   &idle_hold_tap_kp RIGHT_BRACKET PERIOD  &mt BACKSLASH SLASH  &mt RS(MINUS) MINUS
-                                                                  &lt 3 LEFT                     &num_sk 2 UP_ARROW         &thumb_hold_kp LEFT_SHIFT RETURN    &thumb_hold_kp RIGHT_GUI SPACE  &num_hold 3 DOWN_ARROW     &lt 2 RIGHT_ARROW
+&escape              &kp Q  &kp W                     &kp E                                &kp R                     &kp T                  &kp Y                             &kp U                       &kp I                                       &kp O                                   &kp P                &kp BACKSPACE
+&mt LS(EQUAL) EQUAL  &kp A  &left_homerow LEFT_ALT S  &left_homerow D LEFT_CONTROL         &left_homerow F LEFT_GUI  &kp G                  &kp H                             &right_homerow J RIGHT_GUI  &right_homerow K RIGHT_CONTROL              &right_homerow L RIGHT_ALT              &mt MINUS SEMICOLON  &mt EQUAL SQT
+&layer_hold_tap 4 1  &kp Z  &kp X                     &kp C                                &kp V                     &kp B                  &kp N                             &kp M                       &idle_hold_tap_kp LBKT COMMA                &idle_hold_tap_kp RIGHT_BRACKET PERIOD  &mt BACKSLASH SLASH  &mt RIGHT_GUI MINUS
+                                                      &idle_hold_tap_kp LEFT_ALT UP_ARROW  &thumb_layer 2 TAB        &tap_tap_shift_caps    &thumb_hold_kp RIGHT_SHIFT SPACE  &thumb_layer 3 RETURN       &idle_hold_tap_kp RIGHT_CONTROL DOWN_ARROW
             >;
         };
 
