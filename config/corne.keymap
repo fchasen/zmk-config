@@ -160,10 +160,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&escape              &kp Q  &kp W                     &kp E                                &kp R                     &kp T                  &kp Y                             &kp U                       &kp I                                       &kp O                                   &kp P                &kp BACKSPACE
-&mt LS(EQUAL) EQUAL  &kp A  &left_homerow LEFT_ALT S  &left_homerow D LEFT_CONTROL         &left_homerow F LEFT_GUI  &kp G                  &kp H                             &right_homerow J RIGHT_GUI  &right_homerow K RIGHT_CONTROL              &right_homerow L RIGHT_ALT              &mt MINUS SEMICOLON  &mt EQUAL SQT
-&layer_hold_tap 4 2  &kp Z  &kp X                     &kp C                                &kp V                     &kp B                  &kp N                             &kp M                       &idle_hold_tap_kp LBKT COMMA                &idle_hold_tap_kp RIGHT_BRACKET PERIOD  &mt BACKSLASH SLASH  &mt RIGHT_GUI MINUS
-                                                      &idle_hold_tap_kp LEFT_ALT UP_ARROW  &thumb_layer 2 TAB        &tap_tap_shift_caps    &thumb_hold_kp RIGHT_SHIFT SPACE  &thumb_layer 3 RETURN       &idle_hold_tap_kp RIGHT_CONTROL DOWN_ARROW
+&escape              &kp Q  &kp W                     &kp E                                &kp R                 &kp T                              &kp Y                             &kp U                       &kp I                                       &kp O                                   &kp P                &kp BACKSPACE
+&mt LS(EQUAL) EQUAL  &kp A  &left_homerow LEFT_ALT S  &left_homerow LEFT_CONTROL D         &left_homerow LGUI F  &kp G                              &kp H                             &right_homerow RIGHT_GUI J  &right_homerow RIGHT_CONTROL K              &right_homerow RIGHT_ALT L              &mt MINUS SEMICOLON  &mt EQUAL SQT
+&layer_hold_tap 4 2  &kp Z  &kp X                     &kp C                                &kp V                 &kp B                              &kp N                             &kp M                       &idle_hold_tap_kp LBKT COMMA                &idle_hold_tap_kp RIGHT_BRACKET PERIOD  &mt BACKSLASH SLASH  &mt RIGHT_GUI MINUS
+                                                      &idle_hold_tap_kp LEFT_ALT UP_ARROW  &thumb_layer 2 TAB    &thumb_hold_kp LEFT_SHIFT ENTER    &thumb_hold_kp RIGHT_SHIFT SPACE  &thumb_layer 3 RIGHT_GUI    &idle_hold_tap_kp RIGHT_CONTROL DOWN_ARROW
             >;
         };
 
