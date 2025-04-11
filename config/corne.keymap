@@ -151,14 +151,14 @@
     combos {
         compatible = "zmk,combos";
 
-        ArrowCombo {
-            bindings = <&tog 4>;
-            key-positions = <38 39>;
+        funcl {
+            bindings = <&mo 4>;
+            key-positions = <38 37>;
         };
 
         thumb_caps {
             bindings = <&caps_word>;
-            key-positions = <24 35>;
+            key-positions = <38 39>;
         };
 
         command_toggle {
@@ -194,6 +194,11 @@
         down {
             bindings = <&kp DOWN_ARROW>;
             key-positions = <40 41>;
+        };
+
+        fucnr {
+            bindings = <&mo 4>;
+            key-positions = <39 40>;
         };
     };
 
