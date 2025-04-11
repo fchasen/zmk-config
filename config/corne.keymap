@@ -232,10 +232,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&trans  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5    &kp N6         &kp N7    &kp N8                   &kp N9          &kp N0          &kp RC(D)
-&trans  &trans  &trans  &trans  &trans  &trans    &kp RG(TAB)    &kp HOME  &kp RA(UP_ARROW)         &kp RA(LEFT)    &kp UP_ARROW    &kp RA(RIGHT_ARROW)
-&to 0   &trans  &trans  &trans  &trans  &trans    &kp RG(GRAVE)  &kp END   &kp RA(DOWN_ARROW)       &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT
-                        &trans  &trans  &trans    &trans         &to 2     &mt RIGHT_CONTROL RIGHT
+&trans  &autoshift LS(N1) N1  &autoshift LS(N2) N2  &autoshift LS(N3) N3  &autoshift LS(N4) N4  &autoshift LS(N5) N5    &autoshift LS(N6) N6  &autoshift LS(N7) N7  &autoshift RS(N8) N8  &autoshift RS(N9) N9  &autoshift RS(N0) N0  &trans
+&trans  &trans                &trans                &trans                &trans                &trans                  &trans                &trans                &trans                &trans                &trans                &trans
+&trans  &trans                &trans                &trans                &trans                &trans                  &trans                &trans                &trans                &trans                &trans                &trans
+                                                    &trans                &to 0                 &trans                  &trans                &trans                &trans
             >;
         };
 
