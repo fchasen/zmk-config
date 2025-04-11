@@ -5,6 +5,7 @@
  */
 
 #include <behaviors.dtsi>
+#include <behaviors/num_word.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 
@@ -138,6 +139,13 @@
             tapping-term-ms = <135>;
             flavor = "tap-preferred";
         };
+
+        nav_word: nav_word {
+            compatible = "zmk,behavior-auto-layer";
+            #binding-cells = <1>;
+            continue-list = <LEFT DOWN UP RIGHT PG_DN PG_UP HOME END>;
+            ignore-modifiers;
+        };
     };
 
     combos {
@@ -203,7 +211,7 @@
 &escape                          &kp Q  &kp W                     &kp E                                &kp R                 &kp T                              &kp Y                             &kp U                       &kp I                                       &kp O                                   &kp P                       &kp BACKSPACE
 &autoshift MINUS EQUAL           &kp A  &left_homerow LEFT_ALT S  &left_homerow LEFT_CONTROL D         &left_homerow LGUI F  &kp G                              &kp H                             &right_homerow RIGHT_GUI J  &right_homerow RIGHT_CONTROL K              &right_homerow RIGHT_ALT L              &autoshift COLON SEMICOLON  &autoshift DOUBLE_QUOTES APOSTROPHE
 &tap_layer_hold_kp LEFT_SHIFT 2  &kp Z  &kp X                     &kp C                                &kp V                 &kp B                              &kp N                             &kp M                       &autoshift LBKT COMMA                       &idle_hold_tap_kp RIGHT_BRACKET PERIOD  &autoshift QUESTION SLASH   &mt RIGHT_GUI BACKSLASH
-                                                                  &idle_hold_tap_kp LEFT_ALT UP_ARROW  &thumb_layer 2 TAB    &thumb_hold_kp LEFT_SHIFT SPACE    &thumb_hold_kp RIGHT_SHIFT SPACE  &thumb_layer 3 RETURN       &idle_hold_tap_kp RIGHT_CONTROL DOWN_ARROW
+                                                                  &num_word  &thumb_layer LGUI TAB    &thumb_hold_kp LEFT_SHIFT SPACE    &thumb_hold_kp RIGHT_SHIFT SPACE  &thumb_layer RIGHT_GUI RETURN       &nav_word 1
             >;
         };
 
