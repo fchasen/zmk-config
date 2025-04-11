@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include <behaviors.dtsi>
 #include <behaviors/num_word.dtsi>
+#include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 
@@ -152,13 +152,13 @@
         compatible = "zmk,combos";
 
         ArrowCombo {
-            bindings = <&tog 1>;
-            key-positions = <36 41>;
+            bindings = <&tog 4>;
+            key-positions = <38 39>;
         };
 
         thumb_caps {
             bindings = <&caps_word>;
-            key-positions = <38 39>;
+            key-positions = <24 35>;
         };
 
         command_toggle {
@@ -186,13 +186,13 @@
             key-positions = <0 1>;
         };
 
-        funcl {
-            bindings = <&mo 4>;
+        up {
+            bindings = <&kp UP_ARROW>;
             key-positions = <36 37>;
         };
 
-        funcr {
-            bindings = <&mo 4>;
+        down {
+            bindings = <&kp DOWN_ARROW>;
             key-positions = <40 41>;
         };
     };
@@ -208,19 +208,19 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&escape                          &kp Q  &kp W                     &kp E                                &kp R                 &kp T                              &kp Y                             &kp U                       &kp I                                       &kp O                                   &kp P                       &kp BACKSPACE
-&autoshift MINUS EQUAL           &kp A  &left_homerow LEFT_ALT S  &left_homerow LEFT_CONTROL D         &left_homerow LGUI F  &kp G                              &kp H                             &right_homerow RIGHT_GUI J  &right_homerow RIGHT_CONTROL K              &right_homerow RIGHT_ALT L              &autoshift COLON SEMICOLON  &autoshift DOUBLE_QUOTES APOSTROPHE
-&tap_layer_hold_kp LEFT_SHIFT 2  &kp Z  &kp X                     &kp C                                &kp V                 &kp B                              &kp N                             &kp M                       &autoshift LBKT COMMA                       &idle_hold_tap_kp RIGHT_BRACKET PERIOD  &autoshift QUESTION SLASH   &mt RIGHT_GUI BACKSLASH
-                                                                  &num_word  &thumb_layer LGUI TAB    &thumb_hold_kp LEFT_SHIFT SPACE    &thumb_hold_kp RIGHT_SHIFT SPACE  &thumb_layer RIGHT_GUI RETURN       &nav_word 1
+&escape         &kp Q  &kp W                     &kp E                         &kp R                    &kp T        &kp Y      &kp U                            &kp I                           &kp O                                   &kp P                       &kp BACKSPACE
+&sl 3           &kp A  &left_homerow LEFT_ALT S  &left_homerow LEFT_CONTROL D  &left_homerow LGUI F     &kp G        &kp H      &right_homerow RIGHT_GUI J       &right_homerow RIGHT_CONTROL K  &right_homerow RIGHT_ALT L              &autoshift COLON SEMICOLON  &autoshift DOUBLE_QUOTES APOSTROPHE
+&sk LEFT_SHIFT  &kp Z  &kp X                     &kp C                         &kp V                    &kp B        &kp N      &kp M                            &autoshift LBKT COMMA           &idle_hold_tap_kp RIGHT_BRACKET PERIOD  &autoshift QUESTION SLASH   &sk RIGHT_SHIFT
+                                                 &num_word                     &thumb_hold_kp LGUI TAB  &kp SPACE    &kp SPACE  &thumb_hold_kp RIGHT_GUI RETURN  &nav_word 1
             >;
         };
 
         Navigation {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans                               &trans                                &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans                               &idle_hold_tap_kp SEMICOLON UP_ARROW  &trans
-&to 0   &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &idle_hold_tap_kp PERIOD LEFT_ARROW  &idle_hold_tap_kp SLASH DOWN_ARROW    &idle_hold_tap_kp MINUS RIGHT_ARROW
-                        &trans  &trans  &trans    &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans    &trans          &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans    &kp UP_ARROW    &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &kp LEFT  &kp DOWN_ARROW  &kp RIGHT
+                        &trans  &trans  &trans    &trans  &trans  &to 0
             >;
         };
 
