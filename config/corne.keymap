@@ -213,10 +213,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&escape         &kp Q  &kp W                     &kp E                         &kp R                    &kp T        &kp Y      &kp U                            &kp I                           &kp O                                   &kp P                       &kp BACKSPACE
-&sl 3           &kp A  &left_homerow LEFT_ALT S  &left_homerow LEFT_CONTROL D  &left_homerow LGUI F     &kp G        &kp H      &right_homerow RIGHT_GUI J       &right_homerow RIGHT_CONTROL K  &right_homerow RIGHT_ALT L              &autoshift COLON SEMICOLON  &autoshift DOUBLE_QUOTES APOSTROPHE
-&sk LEFT_SHIFT  &kp Z  &kp X                     &kp C                         &kp V                    &kp B        &kp N      &kp M                            &autoshift LBKT COMMA           &idle_hold_tap_kp RIGHT_BRACKET PERIOD  &autoshift QUESTION SLASH   &sk RIGHT_SHIFT
-                                                 &num_word 2                   &thumb_hold_kp LGUI TAB  &kp SPACE    &kp SPACE  &thumb_hold_kp RIGHT_GUI RETURN  &nav_word 1
+&escape         &kp Q  &kp W                     &kp E                         &kp R                         &kp T                               &kp Y                              &kp U                              &kp I                           &kp O                                   &kp P                       &kp BACKSPACE
+&sl 3           &kp A  &left_homerow LEFT_ALT S  &left_homerow LEFT_CONTROL D  &left_homerow LGUI F          &kp G                               &kp H                              &right_homerow RIGHT_GUI J         &right_homerow RIGHT_CONTROL K  &right_homerow RIGHT_ALT L              &autoshift COLON SEMICOLON  &autoshift DOUBLE_QUOTES APOSTROPHE
+&sk LEFT_SHIFT  &kp Z  &kp X                     &kp C                         &kp V                         &kp B                               &kp N                              &kp M                              &autoshift LBKT COMMA           &idle_hold_tap_kp RIGHT_BRACKET PERIOD  &autoshift QUESTION SLASH   &sk RIGHT_SHIFT
+                                                 &num_word 2                   &left_homerow LEFT_SHIFT TAB  &idle_hold_tap_kp LEFT_GUI SPACE    &idle_hold_tap_kp RIGHT_GUI SPACE  &right_homerow RIGHT_SHIFT RETURN  &nav_word 1
             >;
         };
 
